@@ -43,12 +43,11 @@ class MyHomePage extends StatelessWidget {
               children: transactions.map((transaction) {
                 return Card(
                     child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      child: Text(transaction.amount.toString(),
+                      child: Text('\$ ${transaction.amount}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -59,13 +58,15 @@ class MyHomePage extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(transaction.title,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                             )),
-                        Text(transaction.date.toString(), style: TextStyle(fontSize: 15, color: Colors.grey)),
+                        Text(transaction.date.toString(),
+                            style: TextStyle(fontSize: 12, color: Colors.grey)),
                       ],
                     ),
                   ],
