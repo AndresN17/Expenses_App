@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,6 +14,13 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final List<Transaction> transactions = [
+    Transaction(id: '1', title: 'Guitar', amount: 78.93, date: DateTime.now()),
+    Transaction(
+        id: '2', title: 'Cellphone', amount: 345.98, date: DateTime.now()),
+    Transaction(
+        id: '3', title: 'Yuri Jahad', amount: 5809.56, date: DateTime.now()),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +28,49 @@ class MyHomePage extends StatelessWidget {
           title: Text("Expense App"),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Card(
-              color:Colors.blueGrey,
-              child: Container(width: 100, child: Text("chart")),
-              elevation: 5,
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.blueGrey,
+                child: Text("chart"),
+                elevation: 5,
+              ),
             ),
-            Card(
-              child: Text("List of TX"),
+            Column(
+              children: transactions.map((transaction) {
+                return Card(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      child: Text(transaction.amount.toString(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.purple)),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.purple, width: 2),
+                      ),
+                      padding: EdgeInsets.all(10),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text(transaction.title,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        Text(transaction.date.toString(), style: TextStyle(fontSize: 15, color: Colors.grey)),
+                      ],
+                    ),
+                  ],
+                ));
+              }).toList(),
             ),
           ],
         ));
