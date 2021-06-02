@@ -12,9 +12,9 @@ class _UserTransactionState extends State<UserTransaction> {
   final List<Transaction> _userTransactions = [
     Transaction(id: '1', title: 'Guitar', amount: 78.93, date: DateTime.now()),
     Transaction(
-        id: '2', title: 'Cellphone', amount: 345.98, date: DateTime.now()),
+        id: '2', title: 'Cellphone', amount: 35.98, date: DateTime.now()),
     Transaction(
-        id: '3', title: 'Yuri Jahad', amount: 5809.56, date: DateTime.now()),
+        id: '3', title: 'Yuri Jahad', amount: 58.56, date: DateTime.now()),
   ];
 
   void _addNewTransaction(String newTitle, double newAmount) {
