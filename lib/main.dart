@@ -18,10 +18,8 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: [
         const Locale('en'),
-        const Locale('es'), 
-        const Locale.fromSubtags(
-            languageCode:
-                'zh'),
+        const Locale('es'),
+        const Locale.fromSubtags(languageCode: 'zh'),
       ],
       theme: ThemeData(
           primarySwatch: Colors.green,
@@ -69,11 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String newTitle, double newAmount) {
+  void _addNewTransaction(String newTitle, double newAmount, DateTime newDate) {
     final newTransaction = Transaction(
         title: newTitle,
         amount: newAmount,
-        date: DateTime.now(),
+        date: newDate,
         id: DateTime.now().toString());
     setState(() {
       _userTransactions.add(newTransaction);
